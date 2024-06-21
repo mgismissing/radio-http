@@ -11,6 +11,13 @@ enum MyEnum {
     Two
 }
 
+class RequestResult {
+    constructor(
+        public response_code: number,
+        public response_text: string,
+    ) {}
+}
+
 /**
  * Custom blocks
  */
@@ -21,7 +28,7 @@ namespace requests {
      * Initializes the Radio module. Nothing will work before this block is called.
      */
     //% blockId=radio_init
-    //% block="Initialize Radio module"
+    //% block="Initialize radio module"
     //% group="Create"
     export function radio_init(): void {
         sdwireless.sdw_init()
@@ -30,8 +37,14 @@ namespace requests {
     /**
      * Returns a new Request object.
      */
-    //% blockId=request block="request url %url to radio address %radio_address"
-    //export function request(radio_address: number, url: string): void {
-        
+    //% block="request to server radio address $radio_address and url $request_url"
+    //% blockId="create"
+    //% blockSetVariable="requestResult"
+    //% group="Create"
+    //% weight=100
+    //export function create(radio_address: number, request_url: string, ): RequestResult {
+    //    sdwireless.sdw_mbit_send_value("0" + request_url, radio_address)
+    //    const requestResult = new RequestResult(20, "ciao");
+    //    return requestResult;
     //}
 }
